@@ -14,18 +14,18 @@ const CameraRig = ({ children }) => {
     const isMobile = window.innerWidth <= 600;
 
     // set the initial position of the model
-    let targetPosition = [-0, 0, 1];
-    if (!snap.intro) {
+    let targetPosition = [-0.4, 0, 2];
+    if (snap.intro) {
       if (isBreakPoint) targetPosition = [0, 0, 2];
       if (isMobile) targetPosition = [0, 0.2, 2.5];
     } else {
-      if (isMobile) targetPosition = [0, 0.5, 1.5];
-      else targetPosition = [-0.4, 0, 1.5];
+      if (isMobile) targetPosition = [0, 0, 2.5]
+      else targetPosition = [0, 0, 2];
     }
 
     // set model camera position
     easing.damp3(state.camera.position, targetPosition, 1, delta);
-    
+
     // set the model rotation smoothly
     easing.dampE(
       group.current.rotation,
